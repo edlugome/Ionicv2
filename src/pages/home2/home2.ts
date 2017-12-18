@@ -5,6 +5,8 @@ import {ChatRoomPage} from '../chat-room/chat-room';
 import {ProyectosPage} from '../proyectos/proyectos';
 import {Storage} from '@ionic/storage';
 import {Member} from '../register/member';
+import {ProjectRegisterPage} from '../project-register/project-register';
+import {HomePage} from '../home/home';
 
 @IonicPage()
 @Component({
@@ -29,10 +31,22 @@ export class Home2Page
     this.storage.get('member').then(val=>this.nom=val['name']);
   }
 
+  LogOut()
+  {
+    this.storage.clear();
+    this.navCtrl.setRoot(HomePage);
+  }
+
+
   joinChat() {
     this.socket.connect();
     this.socket.emit('set-nickname', this.nickname);
     this.navCtrl.push('ChatRoomPage', { nickname: this.nickname });
+  }
+
+  goToProjectForm()
+  {
+    this.navCtrl.push(ProjectRegisterPage);
   }
 
   IrAProyectos()

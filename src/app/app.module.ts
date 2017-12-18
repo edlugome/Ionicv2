@@ -6,18 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SearchPage } from '../pages/search/search';
 import {FirstPage} from '../pages/first/first';
 import { HttpModule } from '@angular/http';
 import { RegisterPage } from '../pages/register/register';
 import { Home2Page } from '../pages/home2/home2';
+import { ProjectRegisterPage } from '../pages/project-register/project-register';
 import {ProyectosPage} from '../pages/proyectos/proyectos';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-<<<<<<< HEAD
 import { IonicStorageModule } from '@ionic/storage';
 const config: SocketIoConfig = { url: 'http://192.168.250.15:3001', options: {} };
-=======
-const config: SocketIoConfig = { url: 'http://192.168.250.30:3001', options: {} };
->>>>>>> 5462da9f1fc19c78bb2a62c4a543dc8720a6dedb
 
 @NgModule({
   declarations: [
@@ -26,7 +24,9 @@ const config: SocketIoConfig = { url: 'http://192.168.250.30:3001', options: {} 
     FirstPage,
     RegisterPage,
     Home2Page,
-    ProyectosPage
+    ProyectosPage,
+    ProjectRegisterPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,9 @@ const config: SocketIoConfig = { url: 'http://192.168.250.30:3001', options: {} 
     FirstPage,
     RegisterPage,
     Home2Page,
-    ProyectosPage
+    ProyectosPage,
+    ProjectRegisterPage,
+    SearchPage
 
   ],
   providers: [

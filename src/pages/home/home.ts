@@ -26,12 +26,25 @@ export class HomePage
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: Http, private storage:Storage) 
   {
+    this.storage.get('member').then(
+      member=>
+      {
+        if(member!=null)
+        {
+          this.navCtrl.setRoot(Home2Page);
+        }
+      }
+
+    );
+  }
+
+  ionViewDidLoad()
+  {
 
   }
 
   Login()
   {
-
     var datos =
     {
       username:this.username.value,
@@ -39,61 +52,8 @@ export class HomePage
     }
 
     this.LoginMember(datos);
-    /*this.http.post('http://localhost/planificador/login.php', datos).subscribe
-    (data =>
-        {
-          this.data.response = data["_body"];
-
-          if(data["_body"] == '404')
-          {
-
-            let alert = this.alertCtrl.create
-            ({
-                  title: 'Usario no existe o es incorrecto',
-                  subTitle: 'El nombre de usuario no existe regristrese o verifique sus datos',
-                  buttons: ['OK']
-              });
-
-              alert.present();
-          }
-          else
-          {
-            let alert = this.alertCtrl.create
-            ({
-                  title: 'Login Exitoso',
-                  subTitle: 'El nombre de usuario no existe regristrese o verifique sus datos',
-                  buttons: ['OK']
-              });
-
-            alert.present();
-            var ServerJson = JSON.parse(data["_body"]);
-            var json =
-            {
-              id: ServerJson['id_miembro'],
-              username: ServerJson['nom_usuario'],
-              email:ServerJson['email']
-            }
-            this.navCtrl.setRoot(Home2Page, json);
-
-          }
-          
-
-        },
-        error => 
-        {
-            let alert = this.alertCtrl.create
-            ({
-                  title: 'Error',
-                  subTitle: error,
-                  buttons: ['OK']
-              });
-
-            alert.present();
-
-        }
-
-      );*/
   }
+
 
   LoginMember(member:any)
   {
